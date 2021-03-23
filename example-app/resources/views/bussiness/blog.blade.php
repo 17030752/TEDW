@@ -15,20 +15,10 @@
                 <h2 class="intro-text text-center">Company <strong>blog</strong>
                 </h2>
                 <hr>
-                <ul class="nav nav-pills">
-                    @foreach($categories as $category)
-                    <li>
-                        <a href="{{route('blog',$category->id)}}">
-                        {{$category->name}}    
-                        </a>
-                        
-                    </li>
-                    @endforeach
-                </ul>
             </div>
             @foreach ($posts as $p )
             <div class="col-lg-12 text-center">
-                <img class="img-responsive img-border img-full" src="{{asset('img/'.$p->image)}}" alt="">
+                <img class="img-responsive img-border img-full" src="{{asset('img/slide-1.jpg')}}" alt="">
                 <h2>{{ $p ->title}}
                     <br>
                     <small>{{$p->created_at}}</small>
