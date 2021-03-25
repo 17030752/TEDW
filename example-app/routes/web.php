@@ -3,6 +3,7 @@
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\BussinessController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,3 +36,4 @@ Route::get('/contact',[BussinessController::class,'contact']) ->name('contact');
 Route::get('/about',[BussinessController::class,'about']) ->name('about');
 Route::get('/blog/{category_id?}',[BussinessController::class,'blog']) ->name('blog');
 Route::get('/services',[BussinessController::class,'services']) ->name('services');
+Route::resource('blogadmin', BlogController::class);

@@ -26,7 +26,7 @@ class BussinessController extends Controller
         }
        
         $categories = Category::all();
-        return view('Blog',compact('posts','categories'));
+        return view('Blog',compact('posts','categories','category_id'));
     }
     public function services(){
         $services = DB::table('services')
