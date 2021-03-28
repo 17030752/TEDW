@@ -34,8 +34,8 @@
                     <br>
                     <small>{{$p->created_at}}</small>
                 </h2>
-                <p> {{$p->content}}.</p>
-                <a href="#" class="btn btn-default btn-lg">Read More</a>
+                <p> {{Str::limit($p->content,100)}}.</p>
+                <a href="{{route('readmore',$p->id)}}" class="btn btn-default btn-lg">Read More{{$p->id}}</a>
                 <hr>
             </div>
             @endforeach

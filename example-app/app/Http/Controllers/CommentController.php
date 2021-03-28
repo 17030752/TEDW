@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
-class BlogController extends Controller
+use App\Models\Comment;
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        return view('blogadmin.index',compact('posts'));
+        //
     }
 
     /**
@@ -24,7 +23,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blogadmin.create');
+        //
     }
 
     /**
@@ -35,20 +34,16 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //volver a dejar como estaba $request ->get('category_id') y sin buque y concatenacion de i
-        for ($i=0; $i <51 ; $i++) { 
-        $post = new Post();
-        $post->title=$request->get('title').$i;
-        $post->author=$request->get('author').$i;
-        $post->content=$request->get('content');
-        $post->category_id=rand(1,5);
-        $post->image='image.jpg';
-        $post->created_at=date('Y-m-d H:i:s');
-        $post->updated_at=date('Y-m-d H:i:s');
-        $post->save();
-        }
-        
-        return redirect('blogadmin');
+        $comment = new Comment();
+        $comment->author=$request->get('author');
+        $comment->comment=$request->get('comment');
+        $id = $request->get('post_id');
+        $comment->post_id=$id;
+
+        $comment->created_at=date('Y-m-d H:i:s');
+        $comment->updated_at=date('Y-m-d H:i:s');
+        $comment->save();
+        return redirect('blog/post/'.$id);
     }
 
     /**

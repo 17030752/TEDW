@@ -4,6 +4,7 @@ use App\Http\Controllers\HelloController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\BussinessController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,5 +36,8 @@ Route::get('/index',[BussinessController::class,'home']) ->name('home');
 Route::get('/contact',[BussinessController::class,'contact']) ->name('contact');
 Route::get('/about',[BussinessController::class,'about']) ->name('about');
 Route::get('/blog/{category_id?}',[BussinessController::class,'blog']) ->name('blog');
+Route::get('/blog/post/{post_id?}',[BussinessController::class,'readmore']) ->name('readmore');
+Route::get('/blog/post/{post_id?}/comment',[BussinessController::class,'form_comment']) ->name('comment');
 Route::get('/services',[BussinessController::class,'services']) ->name('services');
 Route::resource('blogadmin', BlogController::class);
+Route::resource('commentadmin', CommentController::class);

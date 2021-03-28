@@ -23,7 +23,7 @@
 			 {{Form::file('image',null,['class'=>'form-control','placeholder'=>'image'])}} 
 			</div>
 			{{Form::label('category_id', 'Categories')}}
-			 {{Form::select('category_id',['1'=>'category 1','2'=>'category 2'],null,['class'=>'form-control','placeholder'=>'options'])}}
+			 {{Form::select('category_id',['1'=>'category 1','2'=>'category 2','3' =>'Category 3','4'=>'Category 4','5'=>'Category 5'],null,['class'=>'form-control','placeholder'=>'options'])}}
 			 {{Form::submit('Send',['class'=>'form-control btn btn-success'])}}
 			{!! Form::close() !!}
 		</div>
