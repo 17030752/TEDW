@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 class BlogController extends Controller
 {
     /**
@@ -24,7 +25,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blogadmin.create');
+        $categories = Category::pluck('name','id');
+        return view('blogadmin.create',compact('categories'));
     }
 
     /**
@@ -36,17 +38,21 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         //volver a dejar como estaba $request ->get('category_id') y sin buque y concatenacion de i
-        for ($i=0; $i <51 ; $i++) { 
+        
         $post = new Post();
         $post->title=$request->get('title').$i;
         $post->author=$request->get('author').$i;
         $post->content=$request->get('content');
-        $post->category_id=rand(1,5);
+        $post->category_id=$request ->get('category_id');
+        if ($request->hash_file('image')) {
+            # code...
+            $image=$request->file('image');
+        }
         $post->image='image.jpg';
         $post->created_at=date('Y-m-d H:i:s');
         $post->updated_at=date('Y-m-d H:i:s');
         $post->save();
-        }
+        
         
         return redirect('blogadmin');
     }
