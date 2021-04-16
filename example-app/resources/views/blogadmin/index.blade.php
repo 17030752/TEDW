@@ -8,6 +8,11 @@
             <h2 class="intro-text text-center">Blog administration <strong>blog</strong>
             </h2>
             <hr>
+            @if(session()->get('success'))
+            <div class="alert alert-success text text-center">
+              {{session()->get('success')}}
+            </div>
+            @endif
             <div class="row">
                 <a href="{{route('blogadmin.create')}}" class="btn btn-primary">New</a>
             </div>

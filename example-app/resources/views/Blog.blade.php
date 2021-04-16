@@ -29,7 +29,7 @@
             </div>
             @foreach ($posts as $p )
             <div class="col-lg-12 text-center">
-                <img class="img-responsive img-border img-full" src="{{asset('img/'.$p->image)}}" alt="">
+                <img class="img-responsive img-border img-full" src="{{ asset('storage/images/') }}/{{ $p->image }}" alt="">
                 <h2>{{ $p ->title}}
                     <br>
                     <small>{{$p->created_at}}</small>

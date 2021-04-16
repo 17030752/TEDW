@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\HelloController;
-use App\Http\Controllers\SiteController;
-use App\Http\Controllers\BussinessController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BussinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +47,5 @@ Route::get('/blog/post/{post_id?}/comment',[BussinessController::class,'form_com
 Route::get('/services',[BussinessController::class,'services']) ->name('services');
 Route::resource('blogadmin', BlogController::class);
 Route::resource('commentadmin', CommentController::class);
+
+require __DIR__.'/auth.php';

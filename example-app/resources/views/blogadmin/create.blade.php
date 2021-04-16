@@ -8,7 +8,7 @@
 			<h2 class="intro-text text-center">Blog administration <strong>blog</strong>
 			</h2>
 			<hr>
-			{!! Form::open(['url' => 'blogadmin','method'=>'post']) !!}
+			{!! Form::open(['url' => 'blogadmin','method'=>'post','files'=>true]) !!}
 			<div class="form-group">
 			{{Form::label('title', 'Title')}}
 			 {{Form::text('title',null,['class'=>'form-control','placeholder'=>'Title'])}}
